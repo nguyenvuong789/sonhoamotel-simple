@@ -1,13 +1,15 @@
 :root {
-  --ink: #22201b;
-  --muted: #6f675c;
-  --paper: #fffaf2;
-  --soft: #f4ead8;
-  --line: #decdb2;
-  --green: #0f5c4c;
-  --green-dark: #0b3e35;
-  --coral: #d84e3a;
-  --gold: #c8953d;
+  --ink: #231f1a;
+  --muted: #706653;
+  --paper: #fff7e8;
+  --soft: #f6e7c8;
+  --line: #dfc99e;
+  --green: #0b6f64;
+  --green-dark: #073f3b;
+  --coral: #e35435;
+  --gold: #c98725;
+  --sea: #0e8fb0;
+  --sand: #f3c36d;
   --white: #ffffff;
   --shadow: 0 22px 70px rgba(41, 31, 18, 0.16);
 }
@@ -23,7 +25,9 @@ html {
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
+  background:
+    radial-gradient(circle at top left, rgba(14, 143, 176, 0.16), transparent 28rem),
+    linear-gradient(180deg, #fff7e8 0%, #fffaf2 38%, #f9eed9 100%);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 17px;
   line-height: 1.65;
@@ -45,12 +49,27 @@ a {
   min-height: 94vh;
   padding: 22px clamp(18px, 4vw, 58px) 64px;
   background:
-    linear-gradient(105deg, rgba(15, 92, 76, 0.93) 0%, rgba(15, 92, 76, 0.75) 42%, rgba(216, 78, 58, 0.08) 72%),
+    linear-gradient(105deg, rgba(7, 63, 59, 0.94) 0%, rgba(11, 111, 100, 0.82) 42%, rgba(243, 195, 109, 0.26) 72%),
     url("assets/02-_dsc0207-copy-20200518140440.jpg") center/cover;
   color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -8vw;
+  right: -8vw;
+  bottom: -54px;
+  height: 120px;
+  background: var(--paper);
+  border-radius: 50% 50% 0 0 / 42% 42% 0 0;
 }
 
 .nav {
+  position: relative;
+  z-index: 2;
   max-width: 1160px;
   margin: 0 auto;
   display: flex;
@@ -83,6 +102,8 @@ a {
 }
 
 .hero-grid {
+  position: relative;
+  z-index: 1;
   max-width: 1160px;
   min-height: calc(94vh - 90px);
   margin: 0 auto;
@@ -104,6 +125,10 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gold);
+}
+
+.hero .eyebrow {
+  color: #ffd382;
 }
 
 h1,
@@ -139,6 +164,25 @@ h3 {
   margin-bottom: 28px;
   font-size: clamp(18px, 2vw, 22px);
   color: rgba(255, 255, 255, 0.9);
+}
+
+.local-route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.local-route span {
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 211, 130, 0.48);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff3d8;
+  font-size: 13px;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
 }
 
 .hero-actions,
@@ -212,8 +256,14 @@ h3 {
 .hero-photo {
   height: min(62vh, 560px);
   margin: 0;
-  border: 10px solid rgba(255, 255, 255, 0.78);
+  border: 10px solid rgba(255, 243, 216, 0.86);
+  border-radius: 8px;
   box-shadow: var(--shadow);
+  transform: rotate(1.2deg);
+}
+
+.hero-photo img {
+  border-radius: 2px;
 }
 
 .section {
@@ -242,6 +292,65 @@ h3 {
   max-width: 650px;
   margin-bottom: 0;
   font-size: 20px;
+}
+
+.danang-mood {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 0;
+}
+
+.danang-mood article {
+  min-height: 330px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(223, 201, 158, 0.88);
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: 0 18px 42px rgba(72, 53, 27, 0.1);
+}
+
+.danang-mood img {
+  position: absolute;
+  inset: 0;
+  filter: saturate(1.05);
+}
+
+.danang-mood article::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 22%, rgba(7, 63, 59, 0.12) 44%, rgba(7, 63, 59, 0.86) 100%);
+}
+
+.danang-mood div {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 22px;
+  color: var(--white);
+}
+
+.danang-mood span {
+  display: inline-flex;
+  margin-bottom: 9px;
+  color: #ffd382;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.danang-mood h3 {
+  margin-bottom: 6px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+}
+
+.danang-mood p {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.84);
 }
 
 .section-head {
@@ -324,7 +433,9 @@ blockquote p {
   max-width: none;
   padding-left: max(18px, calc((100vw - 1160px) / 2 + 28px));
   padding-right: max(18px, calc((100vw - 1160px) / 2 + 28px));
-  background: var(--green-dark);
+  background:
+    linear-gradient(135deg, rgba(7, 63, 59, 0.96), rgba(11, 111, 100, 0.95)),
+    url("assets/12-_dsc0136-pano-copy-20200518140407.jpg") center/cover;
   color: var(--white);
 }
 
@@ -765,6 +876,7 @@ cite {
   .rooms,
   .service-grid,
   .review-grid,
+  .danang-mood,
   .reason-grid,
   .location-grid {
     grid-template-columns: 1fr 1fr;
@@ -794,9 +906,18 @@ cite {
   .rooms,
   .service-grid,
   .review-grid,
+  .danang-mood,
   .reason-grid,
   .location-grid {
     grid-template-columns: 1fr;
+  }
+
+  .danang-mood {
+    padding-top: 0;
+  }
+
+  .danang-mood article {
+    min-height: 260px;
   }
 
   body {
@@ -823,6 +944,7 @@ cite {
 
   .hero-photo {
     height: 300px;
+    transform: none;
   }
 
   .intro > p {
